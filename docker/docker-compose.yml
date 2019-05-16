@@ -1,0 +1,15 @@
+version: '2'
+services:
+    sonarqube:
+        image: sonarqube:7.4-community
+        ports:
+            - "9000:9000"
+        environment:
+          - sonar.jdbc.username=sonar
+          - sonar.jdbc.password=sonar
+          - sonar.jdbc.url=jdbc:postgresql://postgres:5432/sonar
+    postgres:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=sonar
+            - POSTGRES_PASSWORD=sonar
